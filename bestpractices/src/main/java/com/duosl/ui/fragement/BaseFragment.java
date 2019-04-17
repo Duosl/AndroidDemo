@@ -18,7 +18,7 @@ import butterknife.Unbinder;
  */
 public abstract class BaseFragment extends Fragment {
 
-
+    protected OnFragmentInteractionListener fragmentInteractionListener;
     private final String TAG = this.getClass().getSimpleName();
     private Unbinder bind;
 
@@ -26,6 +26,12 @@ public abstract class BaseFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         Log.d(TAG, "onAttach: ");
+        try {
+            fragmentInteractionListener = (OnFragmentInteractionListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
     }
 
     @Override
@@ -132,4 +138,12 @@ public abstract class BaseFragment extends Fragment {
 
     //懒加载
     protected void lazyload(){}
+
+
+    /**
+     * 用于Fragment向Activity发送通知
+     */
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(Bundle bundle);
+    }
 }

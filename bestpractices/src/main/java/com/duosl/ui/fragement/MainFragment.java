@@ -2,7 +2,6 @@ package com.duosl.ui.fragement;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -38,11 +37,11 @@ public class MainFragment extends BaseFragment {
     @Override
     protected void initView() {
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(OtherFragment.newInstance("Science"));
-        fragments.add(OtherFragment.newInstance("Game"));
-        fragments.add(OtherFragment.newInstance("Equipment"));
-        fragments.add(OtherFragment.newInstance("Business"));
-        fragments.add(OtherFragment.newInstance("Ideas"));
+        fragments.add(ViewAnimationFragment.newInstance("View动画"));
+        fragments.add(FrameAnimationFragment.newInstance("帧动画"));
+        fragments.add(OtherFragment.newInstance("属性动画"));
+        fragments.add(OtherFragment.newInstance("矢量动画"));
+        fragments.add(OtherFragment.newInstance("Lottie"));
         FragmentStatePagerAdapter adapter = new MainPagerAdapter(getFragmentManager(),fragments);
         mViewPager.setAdapter(adapter);
         mViewPager.setOffscreenPageLimit(5);
@@ -80,7 +79,7 @@ public class MainFragment extends BaseFragment {
 
     private class MainPagerAdapter extends FragmentStatePagerAdapter {
         private final List<Fragment> fragments;
-        private final String mTabTitle[] = new String[]{"科技", "游戏", "装备", "创业", "想法"};
+        private final String mTabTitle[] = new String[]{"View动画", "帧动画", "属性动画", "矢量动画", "Lottie"};
 
         public MainPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
             super(fm);

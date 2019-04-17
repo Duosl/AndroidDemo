@@ -14,11 +14,11 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.duosl.ui.R;
+import com.duosl.ui.fragement.BaseFragment;
 import com.duosl.ui.fragement.MainFragment;
 import com.duosl.ui.fragement.OtherFragment;
 import com.duosl.ui.fragement.SettingFragment;
@@ -27,7 +27,7 @@ import com.duosl.ui.utils.UtilBox;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClickListener{
+public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClickListener, BaseFragment.OnFragmentInteractionListener {
 
 
     private static final String TAG = "MainActivity";
@@ -76,7 +76,7 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 
     private void initBottomNavigation() {
         //add item
-        bottomNavigation.addItem(new AHBottomNavigationItem("导航",R.drawable.ic_bottom_car));
+        bottomNavigation.addItem(new AHBottomNavigationItem("动画", R.drawable.ic_bottom_car));
         bottomNavigation.addItem(new AHBottomNavigationItem("音乐",R.drawable.ic_bottom_music));
         bottomNavigation.addItem(new AHBottomNavigationItem("车辆",R.drawable.ic_bottom_navigation));
         bottomNavigation.addItem(new AHBottomNavigationItem("设置",R.drawable.ic_bottom_setting));
@@ -240,5 +240,10 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
         }
 
         Log.e(TAG, "clickPopupWindow finish... ");
+    }
+
+    @Override
+    public void onFragmentInteraction(Bundle bundle) {
+        Log.d(TAG, "onFragmentInteraction: " + bundle);
     }
 }
