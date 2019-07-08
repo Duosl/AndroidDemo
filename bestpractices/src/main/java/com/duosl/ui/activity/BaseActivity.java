@@ -6,9 +6,6 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PersistableBundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,6 +15,10 @@ import android.widget.Toast;
 
 import com.duosl.ui.R;
 import com.duosl.ui.fragement.BaseFragment;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 /**
  * Created by duoshilin on 2019/4/11.
@@ -118,5 +119,17 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode, @Nullable Bundle options) {
+        super.startActivityForResult(intent, requestCode, options);
+        overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+    }
+
+    @Override
+    protected void onDestroy() {
+        overridePendingTransition(android.R.anim.slide_out_right,android.R.anim.slide_in_left);
+        super.onDestroy();
     }
 }

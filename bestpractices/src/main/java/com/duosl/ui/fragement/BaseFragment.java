@@ -2,14 +2,14 @@ package com.duosl.ui.fragement;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -38,6 +38,20 @@ public abstract class BaseFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
+    }
+
+    /**
+     * 当fragment结合viewpager使用的时候 这个方法会调用
+     * 这个方法是在oncreateView之前使用 不能使用控件
+     * @param isVisibleToUser
+     */
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        Log.d(TAG, "setUserVisibleHint: "+ isVisibleToUser);
+        if (getUserVisibleHint()){
+            lazyload();
+        }
     }
 
     @Nullable
@@ -109,19 +123,7 @@ public abstract class BaseFragment extends Fragment {
         Log.d(TAG, "onDetach: ");
     }
 
-    /**
-     * 当fragment结合viewpager使用的时候 这个方法会调用
-     * 这个方法是在oncreateView之前使用 不能使用控件
-     * @param isVisibleToUser
-     */
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        Log.d(TAG, "setUserVisibleHint: "+ isVisibleToUser);
-        if (getUserVisibleHint()){
-            lazyload();
-        }
-    }
+
 
     @Override
     public void onHiddenChanged(boolean hidden) {

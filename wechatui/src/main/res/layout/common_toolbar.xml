@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:id="@+id/common_app_bar"
+    android:paddingHorizontal="10dp">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#000"
+        tools:text="标题" />
+
+    <Button
+        android:id="@+id/iv_action3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:background="@drawable/action_camera_light"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/iv_action2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_gravity="end"
+        android:background="@drawable/action_more"/>
+
+    <Button
+        android:id="@+id/iv_action1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:background="@drawable/action_search" />
+
+
+
+
+</androidx.appcompat.widget.Toolbar>
+

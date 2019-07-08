@@ -1,1 +1,1 @@
-include ':bestpractices'
+include ':bestpractices', ':mvvm', ':wechatui', ':ImmerseStatusBar', ':customview', ':others'

@@ -20,6 +20,7 @@
 
     <include layout="@layout/content_main" />
 
+    <!--实现背景模糊化-->
     <ImageView
         android:id="@+id/blur_image_view"
         android:layout_width="match_parent"
